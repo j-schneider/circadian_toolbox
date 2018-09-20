@@ -1,0 +1,34 @@
+D_LOPAS:
+
+(1) Uses preset values of filter coefficients:
+
+    a=[ 3.414213, 4.768372e-7, 0.5857863];
+    b=[1 2 1 ];
+
+(2 )Sets initial and final conditions of the delays (presumably to deal with 
+    edge effects):
+
+    z=[(a(1)-b(1))*x(1)/a(1), ((a(1)-b(1))*x(2)+(a(2)-b(2))*x(1))/ a(1)];
+  
+BUTT_FILTER (called via HARP DO_FILTER):
+
+(1) Computes A, B using params obtained from dialog
+
+(2) Doesn't set initial and final conditions
+
+(3) Supports two-pass filtering through FILTFILT command
+
+-----------------
+
+D_AUTOCO:
+
+Uses its own formula to compute autocorrelation function.
+
+ACPLOT (called via HARP DO_AUTO):
+
+Uses Matlab XCORR function to compute autocorrelation.
+
+
+
+
+

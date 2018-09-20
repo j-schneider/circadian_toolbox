@@ -1,0 +1,26 @@
+Functions needed in the compution of the statistical F-test.
+
+(March, 1990)
+The enclosed functions are used in conjunction with computing
+the statistical F-test.
+The three m-files "betai.m", "betacf.m", and "gammln.m" are
+direct analogs of the subroutines of the same name given in
+Press et al., Numerical Recipes, Cambridge, 1986.
+
+These files were written from scratch or converted from their
+"Numerical Recipes" Fortran equivalents by:
+Peter R. Shaw
+Woods Hole Oceanographic Institution, Woods Hole, MA 02543
+(508) 457-2000 ext. 2473
+pshaw@aqua.whoi.edu
+
+
+ftest_example.m     -- example of F-test
+ftest_background.m  -- definitions, background of F-test
+ftest_models.m   (function) -- F test for 2 competing models
+fdist.m          (function) -- computes F prob. distribution
+fdistinv.m       (function) -- computes inverse F distrib.
+fdistinvaux.m (function) -- aux. fn. used by fdistinv.m
+betai.m  (function) -- computes the Incomplete Beta function
+betacf.m (function) -- continued fraction form used in betai
+gammln.m (function) -- computes log(gamma function)

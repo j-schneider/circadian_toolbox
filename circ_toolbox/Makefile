@@ -1,0 +1,2 @@
+backup:
+	cp *.m bak

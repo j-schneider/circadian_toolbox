@@ -1,0 +1,460 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.16
+\textclass article
+\language default
+\inputencoding latin1
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Matlab Functions for Support of Fly Data
+\layout Date
+
+Pablo Funes
+\layout Section
+
+Luciferase I/O
+\layout Subsection
+
+luc_read
+\layout LyX-Code
+
+
+\series bold 
+a=luc_read(dirname,first)
+\layout Standard
+
+Reads data from FLYDATA.* files obtained from the data collection station.
+ 
+\layout Standard
+
+This function was formerly called 
+\emph on 
+readfly.
+\layout Subsubsection*
+
+
+\emph on 
+dirname
+\layout Standard
+
+Name of the directory where the FLYDATA.* files are located.
+ Use '.' for the current directory (optional)
+\layout Subsubsection*
+
+
+\emph on 
+first
+\layout Standard
+
+Number of the first file to be read.
+ Previous files will be skipped.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+a
+\layout Standard
+
+Matrix 
+\emph on 
+a
+\emph default 
+ is output which has one row per FLYDATA file, which means that each column
+ will have a well and each row will have a time frame.
+ 
+\layout Standard
+
+Reading starts with FLYDATA.001 and stops when a file is found which has
+ a different number of wells than the previous ones, so the output is a
+ square matrix.
+ 
+\layout Subsubsection*
+
+EXAMPLES
+\layout LyX-Code
+
+a=luc_read;
+\layout Standard
+
+Reads luciferase data files from the current directory into a.
+\layout LyX-Code
+
+b=luc_read('1018')
+\layout Standard
+
+Reads files on directory 1018
+\layout LyX-Code
+
+c=luc_read('.',10);
+\layout Standard
+
+Reads from current directory; skips FLYDATA.001 through FLYDATA.009.
+ 
+\layout Subsubsection*
+
+SEE ALSO
+\layout Standard
+
+luc_write
+\layout Subsection
+
+luc_write
+\layout LyX-Code
+
+
+\series bold 
+luc_write(a,dirname)
+\layout Standard
+
+Creates luciferase-style FLYDATA.* files from the information on a.
+ Formerly called 
+\emph on 
+savefly.
+\layout Subsubsection*
+
+
+\emph on 
+dirname
+\layout Standard
+
+Name of a directory to place FLYDATA files.
+ A new directory will be created if necessary.
+ If the directory exists already, and contains FLYDATA files, those may
+ be overwritten.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+a
+\layout Standard
+
+Variable containing one column per well, as read by 
+\emph on 
+luc_read
+\emph default 
+ or 
+\emph on 
+dusty_read.
+\layout Subsubsection*
+
+EXAMPLES
+\layout LyX-Code
+
+luc_write(a,'newdir');
+\layout Subsubsection*
+
+SEE ALSO
+\layout Standard
+
+luc_read
+\layout Subsubsection*
+
+NOTE
+\layout Standard
+
+The format is not identical, but should be compatible.
+ 
+\layout Section
+
+Shuffling
+\layout Subsection
+
+fly_shuffle
+\layout LyX-Code
+
+
+\series bold 
+b=fly_shuffle(a)
+\layout Standard
+
+Uses Matlab's 
+\emph on 
+randperm 
+\emph default 
+function to shuffle the columns of a fly matrix.
+ Note: Every well is shuffled with identical permutation.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+a
+\layout Standard
+
+A fly data matrix (one well per column) to be shuffled
+\layout Subsubsection*
+
+
+\emph on 
+b
+\layout Standard
+
+Shuffled data matrix, one well per column.
+ 
+\layout Section
+
+Dowse I/O
+\layout Subsection
+
+dusty_read
+\layout LyX-Code
+
+
+\series bold 
+a=dusty_read(filename)
+\layout Standard
+
+Reads a data matrix from Dusty's 
+\begin_inset Quotes eld
+\end_inset 
+
+RAW
+\begin_inset Quotes erd
+\end_inset 
+
+ format
+\layout Subsubsection*
+
+
+\emph on 
+filename
+\layout Standard
+
+Name of the file to be read.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+a
+\layout Standard
+
+The output is square matrix a with a well per column (so column 1 is well
+ 1, etc.).
+\layout Subsubsection*
+
+File Format
+\layout Standard
+
+Dusty's format looks like
+\layout LyX-Code
+
+ Well   1 (%3d) 
+\layout LyX-Code
+
+         x1 (%16.6f)
+\layout LyX-Code
+
+         x2 
+\layout LyX-Code
+
+        ...
+ 
+\layout LyX-Code
+
+       -5000.0
+\layout LyX-Code
+
+ Well   2
+\layout LyX-Code
+
+...
+\layout LyX-Code
+
+END
+\layout Subsection
+
+dusty_save
+\layout LyX-Code
+
+
+\series bold 
+dusty_save(a,filename)
+\layout Standard
+
+Writes a data matrix into a file with Dusty's 
+\begin_inset Quotes eld
+\end_inset 
+
+Raw
+\begin_inset Quotes erd
+\end_inset 
+
+ format.
+  
+\layout Subsubsection*
+
+
+\emph on 
+a
+\layout Standard
+
+Data matrix with one column per well.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+filename
+\layout Standard
+
+Name of the new file Matlab will create this file in Dusty's 
+\begin_inset Quotes eld
+\end_inset 
+
+raw
+\begin_inset Quotes erd
+\end_inset 
+
+ format.
+ 
+\layout Section
+
+Dowse Processing
+\layout Standard
+
+Functions that reproduce Dusty's Fortran code without changes.
+ 
+\layout Subsection
+
+d_autoco
+\layout Standard
+
+Autocorrelation function.
+ 
+\layout Subsubsection*
+
+[r1,r2,sqn]=d_autoco(x,maxlag,bptu,detren) 
+\layout Subsubsection*
+
+
+\emph on 
+x
+\layout Standard
+
+Input vector (a column vector).
+ 
+\layout Subsubsection*
+
+
+\emph on 
+maxlag
+\layout Standard
+
+Determines length of 
+\emph on 
+r1
+\emph default 
+ and 
+\emph on 
+r2
+\emph default 
+.
+ Defaults to n/2 (optional)
+\layout Subsubsection*
+
+
+\emph on 
+bptu
+\layout Standard
+
+Bins per time unit (optional, default=1).
+\layout Subsubsection*
+
+
+\emph on 
+detren
+\layout Standard
+
+Eliminate (1) or not (0) a linear trend before proceeding (optional, default=1).
+ 
+\layout Subsubsection*
+
+
+\emph on 
+r1
+\layout Standard
+
+Autocorrelation of 
+\emph on 
+x
+\emph default 
+ for positive lags only.
+ The length of 
+\emph on 
+r1
+\emph default 
+ is 
+\emph on 
+maxlag
+\emph default 
+.
+\layout Subsubsection*
+
+
+\emph on 
+r2
+\layout Standard
+
+Autocorrelation for positive and negative lags.
+ 
+\layout Subsubsection*
+
+
+\emph on 
+sqn
+\layout Standard
+
+Confidence interval.
+\layout Subsection
+
+d_mesa
+\layout Standard
+
+MESA analysis
+\layout Subsubsection*
+
+[f,tau]=d_mesa(x,detr,lopas)
+\layout Subsubsection*
+
+
+\emph on 
+x
+\layout Standard
+
+Input vector (a column vector).
+ 
+\layout Subsubsection*
+
+
+\emph on 
+detr
+\layout Standard
+
+do (1) or not(0) a linear detrending first (optional, default=1).
+\layout Subsubsection*
+
+
+\emph on 
+lopas
+\the_end
