@@ -29,7 +29,7 @@ analysis than the signal processing toolbox (most likely due to the open source 
 slightly affected and the mesa order and period are a little off
 
 # Fixes
-- peakphase.m now uses DAILY_HOURS as a default
+- peakphase.m now uses DAILY_HOURS as a default.
 
 Usage:
 
@@ -39,16 +39,16 @@ DAILY_HOURS=19;
 
 peakcircplot(o1,o2)
 
--Fixed bug with dam_load when specifying monitor
+- Fixed bug with dam_load when specifying monitor
 
--dam_panels2.m can output 'fhist' (histogram with filtered data)
+- dam_panels2.m can output 'fhist' (histogram with filtered data)
 
--Small help text changes
+- Small help text changes
 
--No longer required to remove .txt from DAMScan output files
+- No longer required to remove .txt from DAMScan output files
 
--dam_panels2.m can output group phase plots
+- dam_panels2.m can output group phase plots
 
--dam_panels2.m can identify periods less than 16 hours
+- dam_panels2.m can identify periods less than 16 hours
 
--hist.m updated to work on current versions of Matlab
+- hist.m updated to work on current versions of Matlab
