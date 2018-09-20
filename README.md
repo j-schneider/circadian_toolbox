@@ -31,9 +31,11 @@ slightly affected and the mesa order and period are a little off
 # Fixes
 - peakphase.m now uses DAILY_HOURS as a default
 Usage:
->>global DAILY_HOURS
->>DAILY_HOURS=19;
->>peakcircplot(o1,o2)
+
+global DAILY_HOURS
+DAILY_HOURS=19;
+peakcircplot(o1,o2)
+
 -Fixed bug with dam_load when specifying monitor
 -dam_panels2.m can output 'fhist' (histogram with filtered data)
 -Small help text changes
