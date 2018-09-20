@@ -30,16 +30,25 @@ slightly affected and the mesa order and period are a little off
 
 # Fixes
 - peakphase.m now uses DAILY_HOURS as a default
+
 Usage:
 
 global DAILY_HOURS
+
 DAILY_HOURS=19;
+
 peakcircplot(o1,o2)
 
 -Fixed bug with dam_load when specifying monitor
+
 -dam_panels2.m can output 'fhist' (histogram with filtered data)
+
 -Small help text changes
+
 -No longer required to remove .txt from DAMScan output files
+
 -dam_panels2.m can output group phase plots
+
 -dam_panels2.m can identify periods less than 16 hours
+
 -hist.m updated to work on current versions of Matlab
