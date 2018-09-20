@@ -65,6 +65,8 @@ for i=1:length(o.names);
     elseif ~exist(daylightname,'file')      
       if exist([pre,'DayLight'])
 	daylightname=[pre,'DayLight'];
+      elseif exist([pre,'DayLight.txt'])
+          daylightname=[pre,'DayLight.txt'];
       end
     end
     if use_daylight & exist(daylightname,'file');

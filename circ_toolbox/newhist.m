@@ -11,6 +11,8 @@
 % Jeff Hall Lab, Kalman Bldg, Brandeis Univ, Waltham MA 02454 USA %%
 % Email: hall@brandeis.edu                                        %%
 %%(C)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Added lines 85-89 & commented line 90 & 99  [j.schneider@utoronto.ca July 2008]
+
 function [avg,sem,light,edges,centers]=newhist(f,start,int,nbins, ...
 					       xstart,lights)
 if nargin<6
@@ -77,10 +79,15 @@ if (nargout==0)
     if ~isempty(light)
     %  i=1+floor(light(i)*size(cmap,1));
      % set(u,'FaceColor',cmap(i,:))
-     daycolor=[1 1 .5];
-     nightcolor=[.1 .1 1];
+     daycolor=[1 1 1];
+     nightcolor=[.5 .5 .5];
      %color=[0 0 1] + light(i)*[1 1 0];
-     color=(1-light(i))*nightcolor + light(i)*daycolor;
+     if light(i)<=mean(light)
+         color=nightcolor;
+     else
+         color=daycolor;
+     end
+%      color=(1-light(i))*nightcolor + light(i)*daycolor;
      set(u,'FaceColor',color);
      %if light(i)<1
      %  set(u,'EdgeColor',color);
@@ -89,7 +96,7 @@ if (nargout==0)
   end
   % errorbars
   obj=errorbar(centers,avg,zeros(1,length(centers)),sem,'k.');
-  set(obj(2),'marker','none');
+%  set(obj(2),'marker','none');
   set(gca,'NextPlot',rep);
   halfstep=(edges(2)-edges(1))/2;
   set(gca,'xlim',[edges(1)-halfstep, edges(end)+halfstep]);

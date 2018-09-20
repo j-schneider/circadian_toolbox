@@ -49,6 +49,18 @@ if nargin<6
 end
 nfigs=sum(which)
 figno=0;
+if ~exist('o1.first')
+    o1.first=1;
+end
+    if ~exist('o2.first')
+    o2.first=1;
+end
+if ~exist('o1.daylight')
+    o1.daylight=[];
+end
+if ~exist('o2.daylight')
+    o2.daylight=[];
+end
 o1=dam_truncate(o1,start,stop,'bins');
 o2=dam_truncate(o2,start,stop,'bins');
 

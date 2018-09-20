@@ -46,7 +46,7 @@ if nargin<6
   first_hour=0;
 end
 if nargin<5
-    period=24.0
+    period=DAILY_HOURS
 end
 
 if nargin<4
